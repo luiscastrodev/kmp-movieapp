@@ -6,4 +6,4 @@ internal interface Dispatcher {
     val io: CoroutineDispatcher
 }
 
-internal expect fun provideDispatcher():Dispatcher
+internal expect fun provideDispatcher(): Dispatcher

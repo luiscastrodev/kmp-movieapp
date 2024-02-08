@@ -9,24 +9,25 @@ import io.ktor.http.takeFrom
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
+private const val API_KEY = ""
+
 private const val BASE_URL = "https://api.themoviedb.org/"
-private const val API_KEY = "5wwpo22034b35c2e5cd9014c1dc2aca0394oe"
 
-internal abstract class KtoApi {
-
+internal abstract class KtorApi {
     val client = HttpClient {
-      install(ContentNegotiation){
-          json(Json{
-              ignoreUnknownKeys = true
-              useAlternativeNames =false
-          })
-      }
+        install(ContentNegotiation){
+            json(Json {
+                ignoreUnknownKeys = true
+                useAlternativeNames = false
+            })
+        }
     }
 
-    fun HttpRequestBuilder.pathUrl(path :String){
-        url{
+
+    fun HttpRequestBuilder.pathUrl(path: String){
+        url {
             takeFrom(BASE_URL)
-            path("3",path)
+            path("3", path)
             parameter("api_key", API_KEY)
         }
     }
